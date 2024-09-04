@@ -1,0 +1,37 @@
+---
+# tasks file for roles/summary
+
+- name: Construct summary
+  set_fact:
+    summary: >-
+      {{ summary | default([]) + 
+        [ {'hostname': item.key, 
+            'samenvatting': item.value.custom_change_summary } ] }}
+  loop: "{{ hostvars | dict2items }}"
+  when: 
+    - item.value.custom_change_summary is defined
+  no_log: "{{ no_log | default('yes') }}"
+
+- name: Display summary
+  debug:
+    msg: | 
+      --------------------------------------------------
+      RUNSAP CHANGE SUMMARY
+      {%- if start_timestamp is defined %}
+      
+      --------------------------------------------------
+      Start    : {{ start_datetime }}
+      End      : {{ stop_datetime }}
+      Duration : {{ runtime_minutes }} minute(s)
+
+      {%- endif %}
+
+      --------------------------------------------------
+
+      {{ the_summary | to_nice_yaml }}
+  vars:
+    the_summary: "{{ summary | default('no summary messages') }}"
+    stop_datetime: "{{ lookup('pipe', 'date +%Y-%m-%d-%H:%M:%S') }}"
+    stop_timestamp: "{{ lookup('pipe', 'date +%s') }}"
+    runtime_seconds: "{{ stop_timestamp | int - start_timestamp | default(stop_timestamp) | int }}"
+    runtime_minutes: "{{ (runtime_seconds | int) // 60 }}"
