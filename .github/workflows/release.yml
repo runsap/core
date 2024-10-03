@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20.8.1'
+          node-version: '22.9'
 
       - name: Update galaxy.yml version
         run: |
