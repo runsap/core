@@ -1,0 +1,7 @@
+# Example configuration file for ansible-lint
+skip_list:
+  - experimental  # Skip experimental rules
+verbosity: 1   # Control output verbosity
+exclude_paths:
+  - docs/  # Example of directories to exclude
+  - tests/

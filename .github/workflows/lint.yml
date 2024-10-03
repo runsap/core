@@ -1,0 +1,23 @@
+name: Lint Ansible Collection
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # Install Python and ansible-lint
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install ansible-lint
+        run: |
+          pip install ansible ansible-lint
+
+      # Run ansible-lint on the collection
+      - name: Lint Collection
+        run: ansible-lint
