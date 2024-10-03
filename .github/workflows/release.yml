@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - dev
+      #- dev
 
 jobs:
   release:
@@ -26,9 +26,6 @@ jobs:
         run: |
           VERSION=$(npx semantic-release --dry-run | grep "Next version" | awk '{print $3}')
           sed -i "s/^version:.*/version: $VERSION/" galaxy.yml
-
-
-
 
       - name: Generate release
         env:
