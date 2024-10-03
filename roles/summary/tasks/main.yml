@@ -2,7 +2,7 @@
 # tasks file for roles/summary
 
 - name: Construct summary
-  set_fact:
+  ansible.builtin.set_fact:
     summary: >-
       {{ summary | default([]) +
         [ {'hostname': item.key,
@@ -13,7 +13,7 @@
   no_log: "{{ no_log | default('yes') }}"
 
 - name: Display summary
-  debug:
+  ansible.builtin.debug:
     msg: |
       --------------------------------------------------
       RUNSAP CHANGE SUMMARY{%- if start_timestamp is defined %}
