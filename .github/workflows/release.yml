@@ -18,6 +18,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20.8.1'
+      
+      - name: Install dependencies
+        run: npm install
 
       - name: Update galaxy.yml version
         run: |
@@ -25,8 +28,7 @@ jobs:
           sed -i "s/^version:.*/version: $VERSION/" galaxy.yml
 
 
-      - name: Install dependencies
-        run: npm install
+
 
       - name: Generate release
         env:
