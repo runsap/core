@@ -14,20 +14,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Update galaxy.yml version
-        run: |
-          VERSION=$(npx semantic-release --dry-run | grep "Next version" | awk '{print $3}')
-          sed -i "s/^version:.*/version: $VERSION/" galaxy.yml
-
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '20.8.1'
+
+      - name: Update galaxy.yml version
+        run: |
+          VERSION=$(npx semantic-release --dry-run | grep "Next version" | awk '{print $3}')
+          sed -i "s/^version:.*/version: $VERSION/" galaxy.yml
 
       - name: Install dependencies
         run: npm install
 
       - name: Generate release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB }}
         run: npx semantic-release
