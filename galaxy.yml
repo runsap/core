@@ -67,3 +67,5 @@ build_ignore: []
 # 'omit_default_directives' is a boolean that controls whether the default directives are used. Mutually exclusive
 # with 'build_ignore'
 # manifest: null
+# Voeg dit toe:
+changelog: ./CHANGELOG.md
