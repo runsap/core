@@ -20,4 +20,4 @@ jobs:
 
       # Run ansible-lint on the collection
       - name: Lint Collection
-        run: ansible-lint .
+        run: ansible-lint
