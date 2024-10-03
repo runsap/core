@@ -24,8 +24,8 @@ jobs:
         with:
           node-version: '20.8.1'
 
-      # - name: Install dependencies
-      #   run: npm install
+      - name: Install dependencies
+        run: npm install
 
       - name: Generate release
         env:
