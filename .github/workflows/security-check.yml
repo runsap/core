@@ -1,4 +1,4 @@
-name: Bandit Security Check
+name: Security Check
 
 on: [push]
 

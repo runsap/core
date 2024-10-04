@@ -3,7 +3,7 @@ Ansible Collection - runsap.core
 
 ![Ansible Lint](https://github.com/runsap/runsap.core/actions/workflows/lint.yml/badge.svg)
 
-![Bandit security](https://github.com/runsap/runsap.core/actions/workflows/bandit-security.yml/badge.svg)
+![Bandit security](https://github.com/runsap/runsap.core/actions/workflows/security-check.yml/badge.svg)
 
 Runsap Introduction
 -------------------
